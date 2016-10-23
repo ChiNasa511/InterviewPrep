@@ -1,0 +1,83 @@
+class Pramp {
+   public static void main(String[] args) {
+      String pramp = "Practice Makes Perfect";
+      System.out.println(pramp);
+      
+   }
+   
+   // Time complexity: O(n^2)
+      
+    public void smallSub(Character[] arr , String str) {
+      
+      // Smallest substring
+      String smallest = "";
+      
+      // Iterate through the string
+      for (int i = 0; i < str.length(); i++) {
+           smallest =  str.substring(0, i);
+         
+         // Check if substring contains characters of arr
+         for (int k = 0; k < arr.size(); k++)  {
+               if (smallest.contains(arr[k])) {           
+                  // What to do now?
+                  return smallest                    
+               }
+            }         
+      }
+      // Print out the smallest substring
+      return smallest;      
+   }  
+}
+
+class Pramp {
+   public static void main(String[] args) {
+      String pramp = "Practice Makes Perfect";
+      System.out.println(pramp);
+      
+   }
+   Solution
+
+We iterate the string from left to right, while using two indices - tailIndex and h.
+At each iteration step, we examine the temp substring  [str.charAt(tailIndex), str.charAt(tailIndex+1) ..., str.charAt(h)]  and keep a copy of the shortest vaild substring we've seen so far.
+
+To examine substrings we use 2 counters:
+uniqueCounter (integer) - number of unique characters of arr in our temp substring
+countMap (map/object/associative array - depends of your language of choice) - number of occurrences of each char from arr in our substring
+
+      
+   function getShortestUniqueSubstring(arr, str):
+   t = 0
+   result = null
+   uniqueCounter = 0
+   countMap = new Map()
+   # initialize countMap:
+   for i from 0 to length(arr)-1:
+      countMap.setValueOf(arr[i], 0)
+   # scan str
+   for h from 0 to length(str)-1:
+      # handle the new head
+      head = str.charAt(h)
+      if countMap.keyExists(head) == false:
+         continue
+      headCount = countMap.getValueOf(head)
+      if headCount == 0:
+         uniqueCounter = uniqueCounter + 1
+      countMap.setValueOf(head, headCount + 1)   
+      # push tail forward
+      while uniqueCounter == length(arr):
+         tempLength = h - t + 1
+         if tempLength == arr.length:
+            return str.substring(t, h)
+         if (!result or tempLength < length(result)):
+            result = str.substring(t, h)
+         tail = str.charAt(t) 
+         if countMap.keyExists(tail):
+            tailCount = countMap.getValueOf(tail) - 1
+            if tailCount == 0:
+               uniqueCounter = uniqueCounter - 1
+            countMap.setValueFor(tail, tailCount)
+         t = t + 1
+   return result
+
+}
+}
