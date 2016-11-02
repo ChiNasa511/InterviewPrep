@@ -30,7 +30,7 @@ public class minMissing {
         return rightElem;
     // if rightElem is negative return leftElem as we want positive
     else if(rightElem < 0)
-        return rightElem;
+        return leftElem;
     // or else return the min of two
     return Math.min(leftElem, rightElem);
     }
