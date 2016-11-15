@@ -3,20 +3,17 @@
 * a body of text. Write code that takes a large string of text, and builds
 * the data needed to make a Word Cloud. You can assume the text will only
 * contain words and standard punctuation.
+*/
 
-
-	Public HashSet<String> createData(String str) {
-// Set to store words
-	HashSet<String> data = new HashSet<String>();
-
-
-	// Counter
-	Int counter = 0;
-	For (String word : str.split(“ ”)) {
-		If (data.contains(word)) {
-counter++; 
+public HashSet<String> createData(String str) {
+	// Set to store words
+	HashMap<String, Integer> data = new HashMap<String, Integer>();
+	String[] words = str.split(" ");
+	
+	for (String word : words) {
+		if (data.containsKey(word)) {
+			data.put(word, get.(word) + 1);
 		} else {
-		data.add(word);
-Counter++;
-}
+			data.put(word, 1);
+	}
 }
